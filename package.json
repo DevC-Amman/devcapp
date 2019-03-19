@@ -32,6 +32,32 @@
     "prettier": "^1.16.4",
     "react-test-renderer": "16.8.3"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "flow check && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "**/*.js": [
+        "prettier --write",
+        "eslint --fix --max-warnings 0",
+        "git add"
+      ],
+      "**/*.{json,graphql,gql}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "yarn.lock",
+      "package-lock.json",
+      "node_modules/**/*",
+      "flow-typed/**/*",
+      "android/**/*",
+      "ios/**/*"
+    ]
+  },
   "jest": {
     "preset": "react-native"
   }
